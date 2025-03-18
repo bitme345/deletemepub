@@ -1,4 +1,4 @@
-name: Multi-Environment Workflow
+name: Multi-Environment Workflow2
 
 on:
   push:
