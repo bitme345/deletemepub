@@ -1,0 +1,29 @@
+name: Multi-Environment Workflow
+
+on:
+  push:
+    branches:
+      - main  # You can change this to your desired branch name
+
+jobs:
+  dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Run echo in dev environment
+        run: echo "This is the dev environment"
+
+  prod:
+    runs-on: ubuntu-latest
+    needs: dev  # This means the prod job will only run after the dev job finishes
+    environment: qa
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Run echo in prod environment
+        run: echo "This is the prod environment"
+
